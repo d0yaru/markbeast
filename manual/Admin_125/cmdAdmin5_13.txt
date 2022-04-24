@@ -1,0 +1,17 @@
+//-------------------------------------------------------------
+// Admin 5 (PlayerInfo[playerid][pAdmin]<5,>=5)
+/mikro
+/rasform
+/ekonom
+/apark
+/weather
+/settime
+/vv
+/makeadmin
+/chstart
+/chstop
+/hellpower
+/makeadminoff
+/setname
+:13
+//-------------------------------------------------------------

@@ -1,0 +1,16 @@
+//-------------------------------------------------------------
+// Admin 2 (PlayerInfo[playerid][pAdmin]<2,>=2)
+/spcar
+/getip
+/eventsetpos
+/eventstart
+/eventstop
+/startmp
+/stopmp
+/veh
+/weap
+/unjail
+/gethelperstat
+/warn
+:12
+//-------------------------------------------------------------
