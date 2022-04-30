@@ -1,8 +1,0 @@
-Выберите радио волну
-
-1. Русское радио - http://play.russianradio.eu/stream
-2. Рок, альтернативный рок, метал - http://galnet.ru:8000/hard
-3. Европа + - http://ep256.hostingradio.ru:8052/europaplus256.mp3
-4. EuropaRussia - http://europarussia.ru:8000/live
-5. Автомат и гитара-radio - http://195.128.127.63:88/mp3
-6. Волшебный Шансон - http://listen.myradio24.com:9000/8144
