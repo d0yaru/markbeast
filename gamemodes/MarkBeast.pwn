@@ -30,7 +30,13 @@
 #include <TOTP>
 #include <mapandreas.inc>
 // new d0
-#include <fly>
+#include <fly>// полёт игрока
+//==========================[ ПОДКЛЮЧЕНИЕ К БАЗЕ-ДАННЫХ ]=======================
+#define sqlhost			"localhost" // Адрес хоста
+#define sqluser			"sqllogin" // Имя пользователя
+#define sqlpass			"sqlpass" // Пароль
+#define sqldb			"sqlname" // Имя Базы данных
+//==============================================================================
 //#include <jit>  в принципе не надо
 #define foreach(%0) for(new _A = 0, %0 = Foreach_IDs[_A];_A < Player_Num_IDs; %0 = Foreach_IDs[++_A])//if(!IsPlayerFake(%0))
 
@@ -7481,7 +7487,7 @@ CMD:bumbox(playerid, params[])
 }
 ALTX:bumbox("/магнитофон");
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/*CMD:piss(playerid, params[])
+CMD:piss(playerid, params[])
 {
 	if(!IsPlayerLogged[playerid]) return false;
 	if(PlayerInfo[playerid][pSex] == 2) return true;
@@ -7506,7 +7512,7 @@ ALTX:bumbox("/магнитофон");
 		SetPlayerSpecialAction(playerid, 0);
 	}
 	return 1;
-}*/
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CMD:selfie(playerid, params[])
 {
@@ -7901,13 +7907,13 @@ public OnGameModeInit()
 
 	switch(GLS[26])
 	{
-	case 0:
+	case 0://CreateMySQLConnection(sqlhost, sqluser, sqldb, sqlpass);
 		{
-			mysql = mysql_connect("localhost", "sqllogin", "sqlname", "sqlpass"); // test
+			mysql = mysql_connect(sqlhost, sqluser, sqldb, sqlpass); // test
 		}
 	case 1:
 		{
-			mysql = mysql_connect("localhost", "sqllogin", "sqlname", "sqlpass"); // 1
+			mysql = mysql_connect(sqlhost, sqluser, sqldb, sqlpass); // 1
 		}
 	case 2:
 		{
@@ -17767,7 +17773,7 @@ CMD:shops(playerid,param[])
 	"[ {1578af}1 {ffffff}]\t{30d5c8}- Смена расы\t\t{ffffff}| {cccc00}50 Рублей\n\
 	[ {1578af}2 {ffffff}]\t{30d5c8}- Все лицензии\t\t{ffffff}| {cccc00}400 Рублей\n\
 	[ {1578af}3 {ffffff}]\t{30d5c8}- Рецепт от врача\t{ffffff}| {cccc00}2 Рублей");
-	ShowPlayerDialogEx(playerid,1989,2,">> Магазин Sky Web",string,"Принять","Назад");
+	ShowPlayerDialogEx(playerid,1989,2,">> Магазин Mark Beast",string,"Принять","Назад");
 	return true;
 }
 IsABoat(carid)
@@ -23325,9 +23331,10 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			{
 				if(AntiDm(playerid,GetPlayerWeapon(playerid)) == 2) return true;
 			}
-			if(NoEnterPickup[playerid]==0)
-			{
-				if(newkeys & KEY_SPRINT && newkeys & KEY_JUMP) ApplyAnimation(playerid, "PED", "GETUP_FRONT", 4.0, 0, 1, 1, 0, 0, 1);
+			//if(NoEnterPickup[playerid]==0)
+			//{
+			    // запрет бежать и прыгать
+				//if(newkeys & KEY_SPRINT && newkeys & KEY_JUMP) ApplyAnimation(playerid, "PED", "GETUP_FRONT", 4.0, 0, 1, 1, 0, 0, 1);
 				/*	if(newkeys & KEY_SPRINT)
 				{
 					new Float:dHealth;
@@ -23338,7 +23345,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						ApplyAnimation(playerid,"FAT","IDLE_tired",4.0,0,0,0,1,0);
 					}
 				}*/
-			}
+			//}
 		}
 	}
 	return true;
