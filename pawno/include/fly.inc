@@ -42,7 +42,7 @@ bool:StartFly(playerid)
     OnFly[playerid] = true;
 	new Float:x,Float:y,Float:z;
 	GetPlayerPos(playerid,x,y,z);
-	SetPlayerPos(playerid,x,y,z+5.0);
+	SetPlayerPos(playerid,x,y,z+1.0);
 	//ApplyAnimation(playerid,"PARACHUTE","PARA_steerR",6.1,1,1,1,1,0,1);
 	ApplyAnimation(playerid,"SWIM","SWIM_TREAD",1.3,1,1,1,1,0,1);//находится в воде на одном месте
 	Fly(playerid);
