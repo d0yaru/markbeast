@@ -40,12 +40,12 @@
 #define sqlpass			"sqlpass"
 #define rootlogin		"rootlogin"
 #define rootpass		"4321"
+#define serverhostname	"hostname Mark Beast | v0.2.0513 | samp-x.ru"
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 #define sqlhost			"localhost"
-#define serverhostname	"hostname Mark Beast | v0.2.0512 | vk.com/markbeast"
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 #define		COLORT1		"{ccad00}"     //Команды
-#define		COLORT2		"{24b3a7}"     //В квадратных скоюках
+#define		COLORT2		"{24b3a7}"     //В квадратных скобках
 #define		COLORT3		"{5555ff}"     //Цифры в меню
 #define		COLORT4		"{30d5c9}"     //Пункт меню
 #define		COLORT5		"{ffd701}"     //Каталог меню
@@ -542,7 +542,8 @@ enum langinfo
 #define COLOR_PROJECT_OLD 		0x9CFFCAFF
 //#define COLOR_PROJECT_EX_OLD 	"{C1EA6A}"
 //#define COLOR_PROJECT 		0xC1EA6AFF //{C1EA6A}
-#define COLOR_PROJECT 			0x6666ffFF //0x3B9480FF //{80943B}
+#define COLOR_PROJECT 			0x6666ffff //0x3B9480FF //{80943B}
+#define COLOR_PROJECT_SITE 		0x30d5c9ff
 //#define COLOR_PROJECT_EX 		"{3B9480}"//"{3B9480}"
 #define GetPlayerVehID(%0) VehID[%0]
 new VehID[MAX_PLAYERS];
@@ -586,7 +587,7 @@ new Language[55][langinfo]=
 	{""COLORT8"[3/3] Выберите цвет кожи",""COLORT3"[3/5] Select your skin color"},//35
 	{"{FFCC99}Светлый\n{FFCC99}Тёмный","{FFCC99}White\n{FFCC99}Black"},//36
 	{"[3/4] Откуда вы о нас узнали?","[3/4] How did you find us?"},//37
-	{"Вкладка 'Hosted'\nОт друзей\nНа порталах/vk.com/markbeast\nВ поисковике\nДругое","'Hosted'\nFrom friends\nOn portals//vk.com/markbeast\nGoogle\nOther"},//38
+	{"Вкладка 'Hosted'\nОт друзей\nНа порталах/samp-x.ru\nВ поисковике\nДругое","'Hosted'\nFrom friends\nOn portals//samp-x.ru\nGoogle\nOther"},//38
 	{""COLORT3"[5/5] Введите ник пригласившего?",""COLORT3"[5/5] Enter nickname of the person who invited you?"},//39
 	{"{FFFFFF}Введите ник игрока пригласившего вас.\nПример: "COLORT3"Carl_Johnson\n","{FFFFFF}Enter nickname of the person who invited you.\nSample: "COLORT3"Carl_Johnson\n"},//40
 	{"Вкладка 'Hosted'","Hosted"},//41
@@ -10699,6 +10700,7 @@ public OnGameModeInit()
 	TextDrawFont(URL[3], 0);
 	TextDrawSetProportional(URL[3], 1);*/
 
+	/*
 	URL[0] = TextDrawCreate(547.1091455, 0.966668, "M");
 	TextDrawLetterSize(URL[0], 0.686001, 3.567470);
 	TextDrawAlignment(URL[0], 1);
@@ -10709,11 +10711,12 @@ public OnGameModeInit()
 	TextDrawFont(URL[0], 2);
 	TextDrawSetProportional(URL[0], 1);
 	TextDrawSetShadow(URL[0], 1);
+	*/
 
-	URL[1] = TextDrawCreate(567.899291, 7.500010, "ark Beast");
+	URL[1] = TextDrawCreate(551.899291, 7.500010, "Mark Beast");
 	TextDrawLetterSize(URL[1], 0.308999, 1.396669);
 	TextDrawAlignment(URL[1], 1);
-	TextDrawColor(URL[1], -1);
+	TextDrawColor(URL[1], COLOR_PROJECT);
 	TextDrawSetShadow(URL[1], 1);
 	TextDrawSetOutline(URL[1], 0);
 	TextDrawBackgroundColor(URL[1], 255);
@@ -10721,10 +10724,10 @@ public OnGameModeInit()
 	TextDrawSetProportional(URL[1], 1);
 	TextDrawSetShadow(URL[1], 1);
 
-	URL[2] = TextDrawCreate(567.898681, 17.933336, "  samp-x.ru");
+	URL[2] = TextDrawCreate(572.898681, 17.933336, "samp-x.ru");
 	TextDrawLetterSize(URL[2], 0.180999, 1.373336);
 	TextDrawAlignment(URL[2], 1);
-	TextDrawColor(URL[2], -1);
+	TextDrawColor(URL[2], COLOR_PROJECT_SITE);
 	TextDrawSetShadow(URL[2], 1);
 	TextDrawSetOutline(URL[2], 0);
 	TextDrawBackgroundColor(URL[2], 255);
@@ -12497,7 +12500,7 @@ public MysqlReferalCheck(playerid)
 			{
 				SendClientMessage(refid, COLOR_RED, "Вы не получили бонус за приведенного вами игрока в связи с причинами указаными ниже:");
 				SendClientMessage(refid, COLOR_RED, "Вы подозреваетесь в мошенничестве, все данные были отосланы администраторам");
-				SendClientMessage(refid, -1, "Вы можете обжаловать решение античита на /vk.com/markbeast");
+				SendClientMessage(refid, -1, "Вы можете обжаловать решение античита на samp-x.ru");
 				format(string, sizeof(string), "%s["COLORT2"%d{ffffff}][%s] И %s["COLORT2"%d{ffffff}][%s] ПОДОЗРЕВАЮТСЯ В ПОПЫТКЕ ФАРМА РЕФЕРАЛОК.",Name(playerid),playerid,PlayerIp[playerid],Referal,refid,PlayerIp[refid]);
 				SendAdminsMessage(COLOR_RED,string);
 				return true;
@@ -12526,7 +12529,7 @@ void AntiFroud(playerid,Referal[])
 	{
 		SendClientMessage(playerid, COLOR_RED, "Вы не получили бонус за приведенного вами игрока в связи с причинами указаными ниже:");
 		SendClientMessage(playerid, COLOR_RED, "Вы подозреваетесь в мошенничестве, все данные были отосланы администраторам");
-		SendClientMessage(playerid, -1, "Вы можете обжаловать решение античита на форуме /vk.com/markbeast");
+		SendClientMessage(playerid, -1, "Вы можете обжаловать решение античита на форуме samp-x.ru");
 		format(string, sizeof(string), "%s["COLORT2"%d{ffffff}][%s] И %s[%s][%s] ПОДОЗРЕВАЮТСЯ В ПОПЫТКЕ ФАРМА РЕФЕРАЛОК.",Name(playerid),playerid,PlayerIp[playerid],Referal,RegIP,OldIP);
 		SendAdminsMessage(COLOR_RED,string);
 		return true;
@@ -12618,6 +12621,16 @@ UpdateBiz(bizid,id)
 		format(temp,sizeof(temp),"%s\n\nНомер: "COLORT3"%d{FFFFFF}",BizInfo[bizid][bName],bizid);
 		format(temp,sizeof(temp),"%s\nБизнес выставлен на продажу",temp);
 		format(temp,sizeof(temp),"%s\nЦена: "COLORT3"%d{FFFFFF}",temp,BizInfo[bizid][bCost]);
+		//------------------------------------------------------------------
+		if(BizInfo[bizid][bState] == 7 || BizInfo[bizid][bState] == 1 || BizInfo[bizid][bState] == 2 || BizInfo[bizid][bState] == 3 || BizInfo[bizid][bState] == 9)//Закусочная_7,Бар_1,Магазин 24/7_2,Магазин одежды_3,Магазин аксессуаров_9
+		{
+			if(BizInfo[bizid][bBuyCost]>0 && BizInfo[bizid][bNeedItem]>0)
+			{
+				if(BizInfo[bizid][bState] == 7) format(temp,sizeof(temp),"%s\n\n{FFFFFF}Требуются "COLORT3"%d{FFFFFF} продуктов со склада фермы\nПо цене 1 за "COLORT3"%d$\n'H' - продать продукты.",temp,BizInfo[bizid][bNeedItem],BizInfo[bizid][bBuyCost]);
+				else format(temp,sizeof(temp),"%s\n\nТребуются "COLORT3"%d{FFFFFF} продуктов с разгрузочной станции.\nПо цене 1 за "COLORT3"%d$\n'H' - продать продукты.",temp,BizInfo[bizid][bNeedItem],BizInfo[bizid][bBuyCost]);
+			}
+		}
+		//------------------------------------------------------------------
 		UpdateDynamic3DTextLabelText(Biz3DText[bizid],COLOR_WHITE,temp);
 	}
 	else
@@ -12641,8 +12654,8 @@ UpdateBiz(bizid,id)
 				format(temp,sizeof(temp),"%s\nЦена за вход: "COLORT3"%.0f{FFFFFF}",temp,BizInfo[bizid][bEnterPrice]);
 			}
 
-
-			if(BizInfo[bizid][bState] == 7 || BizInfo[bizid][bState] == 1 || BizInfo[bizid][bState] == 2 || BizInfo[bizid][bState] == 3 || BizInfo[bizid][bState] == 9)
+			//------------------------------------------------------------------
+			if(BizInfo[bizid][bState] == 7 || BizInfo[bizid][bState] == 1 || BizInfo[bizid][bState] == 2 || BizInfo[bizid][bState] == 3 || BizInfo[bizid][bState] == 9)//Закусочная_7,Бар_1,Магазин 24/7_2,Магазин одежды_3,Магазин аксессуаров_9
 			{
 				if(BizInfo[bizid][bBuyCost]>0 && BizInfo[bizid][bNeedItem]>0)
 				{
@@ -12650,6 +12663,7 @@ UpdateBiz(bizid,id)
 					else format(temp,sizeof(temp),"%s\n\nТребуются "COLORT3"%d{FFFFFF} продуктов с разгрузочной станции.\nПо цене 1 за "COLORT3"%d$\n'H' - продать продукты.",temp,BizInfo[bizid][bNeedItem],BizInfo[bizid][bBuyCost]);
 				}
 			}
+			//------------------------------------------------------------------
 			UpdateDynamic3DTextLabelText(Biz3DText[bizid],COLOR_WHITE,temp);
 		}
 		else
@@ -19372,13 +19386,7 @@ public OnPlayerPickUpDynamicPickup(playerid, pickupid)
 			return true;
 		}
 
-		if(GetPlayerVirtualWorld(playerid)!=0 && pickupid != BizPick[i])
-		{
-			BizEntered[playerid] = i;
-			//new string[128];
-			//format(string,sizeof(string),"Вы вошли в бизнес: [%d]", i);
-    		//SendClientMessage(playerid, -1, string);
-		}
+		//if(GetPlayerVirtualWorld(playerid)!=0 && pickupid != BizPick[i]) BizEntered[playerid] = i; //были вылеты из биза
 
 		if(pickupid == BizPick[i])
 		{
@@ -21204,8 +21212,8 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 		foralbiz(i)
 		{
-			if(!GetString(BizInfo[i][bOwner],"The State"))
-			{
+			//if(!GetString(BizInfo[i][bOwner],"The State"))
+			//{
 				if(BizInfo[i][bState] == 7 || BizInfo[i][bState] == 1 || BizInfo[i][bState] == 2 || BizInfo[i][bState] == 3 || BizInfo[i][bState] == 9)
 				{
 					if(BizInfo[i][bBuyCost]>0 && BizInfo[i][bNeedItem]>0)
@@ -21225,7 +21233,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 						}
 					}
 				}
-			}
+			//}
 		}
 		if(PlayerInfo[playerid][pJob]==3 && VehicleInfo[GetPlayerVehicleID(playerid)][vJob]==3 &&IsPlayerInRangeOfPoint(playerid, 6.0, -1061.9169,-1296.2556,129.2188)) //тюнинг
 		{
@@ -21999,7 +22007,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 				{
 					for(new i; i < sizeof(BuyPos); i ++)
 					{
-						if(IsPlayerInRangeOfPoint(playerid, 2.0, BuyPos[i][0], BuyPos[i][1], BuyPos[i][2]))ShowShopGialog(playerid);
+						if(IsPlayerInRangeOfPoint(playerid, 2.0, BuyPos[i][0], BuyPos[i][1], BuyPos[i][2])) ShowShopGialog(playerid);
 					}
 				}
 			}
@@ -22046,8 +22054,7 @@ EnterBiz(playerid,bizid)
 				GiveMoney(playerid,-floatround(BizInfo[bizid][bEnterPrice]),"EnterPCClub");
 				GiveBizMoney(bizid,floatround(BizInfo[bizid][bEnterPrice]));
 			}
-			//BizEntered[playerid] = bizid;// выкидывало при входе
-			BizEntered[playerid] = -1;
+			BizEntered[playerid] = bizid;
 
 			Fix_SetPlayerInterior(playerid,BizInfo[bizid][bInt]);
 			Fix_SetPlayerVirtualWorld(playerid,(bizid+100));
@@ -24666,7 +24673,7 @@ public OnPlayerLoginMysql(playerid)
 		SendClientMessage(playerid,COLOR_GOLD,"ПРОМОКОД!{FFFFFF} При достижении "COLORT3"3{FFFFFF} уровня, вы получите "COLORT3"50 000${FFFFFF}!");
 		PlayerInfo[playerid][pGetbonus] ++;
 	}
-	//	if(GLS[34]>0) SendClientMessage(playerid,COLOR_PROJECT,"[Объявление] {FFFFFF}В нашей группе вконтакте проходит конкурс Учавствуй и ты vk.com/Qunix.samp");
+	//	if(GLS[34]>0) SendClientMessage(playerid,COLOR_PROJECT,"[Объявление] {FFFFFF}В нашей группе вконтакте проходит конкурс Учавствуй и ты vk.com/markbeast");
 
 	if(PlayerInfo[playerid][pHouseKey]!=-1)
 	{
@@ -30076,7 +30083,17 @@ CMD:test(playerid, params[])
 	if(PlayerInfo[playerid][pAdmin]<6)return false;
 	if(ADuty[playerid]!=228) return cmd_apanel(playerid,"");
 
-    ShowPlayerDialog(playerid, 7001, DIALOG_STYLE_MSGBOX, "Бизнес", "Вы хотите выйти?", "Да", "Нет");
+    //ShowPlayerDialog(playerid, 7001, DIALOG_STYLE_MSGBOX, "Бизнес", "Вы хотите выйти?", "Да", "Нет");
+    //--------------------------------------------------------------------------
+    //ShowShopGialog(playerid);// Магазин 24/7
+    //--------------------------------------------------------------------------
+    new string[128];
+	format(string,sizeof(string),"> Ваш ID = [%d]", playerid);
+	SendClientMessage(playerid, -1, string);
+
+
+    //--------------------------------------------------------------------------
+    
 	return true;
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33607,8 +33624,8 @@ CMD:orderlist(playerid, params[])
 	new string[12400],num;
 	foralbiz(i)
 	{
-		if(!GetString(BizInfo[i][bOwner],"The State"))
-		{
+		//if(!GetString(BizInfo[i][bOwner],"The State"))
+		//{
 			if(BizInfo[i][bState] == 7 || BizInfo[i][bState] == 1 || BizInfo[i][bState] == 2 || BizInfo[i][bState] == 3 || BizInfo[i][bState] == 9)
 			{
 				if(num<21)
@@ -33622,7 +33639,7 @@ CMD:orderlist(playerid, params[])
 				}
 				else break;
 			}
-		}
+		//}
 	}
 	if(num>0) ShowPlayerDialogEx(playerid,8761,2,"Поиск предпринимателя",string,"Принять","Отмена");
 	else ShowPlayerDialogEx(playerid,0,0,"Поиск предпринимателя","{FFFFFF}К сожалению на данный момент нет заказов!","Принять","");
@@ -33872,7 +33889,7 @@ CMD:mute(playerid, params[])
 
 	format(CMDstr,144,"%s %s["COLORT2"%d{ffffff}] заглушил игрока %s["COLORT2"%d{ffffff}] на %d минут. Причина: %s",string, Name(playerid),playerid,Name(params[0]),params[0],params[1],params[2]);
 	AsendClientMessageToAll(COLOR_ADMINRED,CMDstr);
-	ShowPlayerDialogEx(params[0],0,0,"","Вы получили бан чата, если вы не согласны с решением Администратора, то напишите жалобу на /vk.com/markbeast, приложив данный скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
+	ShowPlayerDialogEx(params[0],0,0,"","Вы получили бан чата, если вы не согласны с решением Администратора, то напишите жалобу на samp-x.ru, приложив данный скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
 	PlayerInfo[params[0]][pMuteTime] = params[1]*60;
 	return true;
 }
@@ -33907,7 +33924,7 @@ CMD:sban(playerid, params[])
 	if(days>30 || 1>days) return SendClientMessage(playerid, COLOR_PROJECT, "Используйте:{FFFFFF} /sban [id] [days 1-30] [Причина]");
 	format(string,sizeof(string),"Администратор %s["COLORT2"%d{ffffff}] тихо забанил игрока %s["COLORT2"%d{ffffff}] на %d дней. Причина: %s",PN(playerid),playerid,PN(id),id, days, reason);
 	SendAdminsMessage(COLOR_ADMINRED,string);
-	ShowPlayerDialogEx(id,0,0,"","Вы получили бан аккаунта, если вы не согласны с решением Администратора, то напишите жалобу на /vk.com/markbeast, приложив данный скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
+	ShowPlayerDialogEx(id,0,0,"","Вы получили бан аккаунта, если вы не согласны с решением Администратора, то напишите жалобу на samp-x.ru, приложив данный скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
 	PlayerInfo[id][pWarns]=0;
 	J_Kick(id);
 	BanName(PN(id), PN(playerid), days, reason);
@@ -33945,7 +33962,7 @@ CMD:ban(playerid, params[])
 	if(days>30 || 1>days) return SendClientMessage(playerid, COLOR_PROJECT, "Используйте:{FFFFFF} /ban [id] [days 1-30] [Причина]");
 	format(string,sizeof(string),"Администратор %s["COLORT2"%d{ffffff}] забанил игрока %s["COLORT2"%d{ffffff}] на %d дней. Причина: %s",PN(playerid),playerid,PN(id),id, days, reason);
 	AsendClientMessageToAll(COLOR_ADMINRED,string);
-	ShowPlayerDialogEx(id,0,0,"","Вы получили бан аккаунта, если вы не согласны с решением Администратора, то напишите жалобу на /vk.com/markbeast, приложив скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
+	ShowPlayerDialogEx(id,0,0,"","Вы получили бан аккаунта, если вы не согласны с решением Администратора, то напишите жалобу на samp-x.ru, приложив скриншот.\n{2D8E35}"Mode_Forum#,"Закрыть","");
 	PlayerInfo[id][pWarns]=0;
 	J_Kick(id);
 	BanName(PN(id), PN(playerid), days, reason);
@@ -34346,7 +34363,7 @@ CMD:warn(playerid, params[])
 	PlayerInfo[params[0]][pWarns] ++;
 	format(string,sizeof(string),"Администратор %s["COLORT2"%d{ffffff}] выдал предупреждение игроку %s["COLORT2"%d{ffffff}] [%d/3] Причина: %s",Name(playerid),playerid,Name(params[0]),params[0],PlayerInfo[params[0]][pWarns],reason);
 	AsendClientMessageToAll(COLOR_ADMINRED,string);
-	ShowPlayerDialogEx(params[0],0,0,"","Вы получили предупреждение, если вы не согласны с решением Администратора, то напишите жалобу на /vk.com/markbeast, приложив данный скриншот.\nВарн можно снять с помощью /donate.\n{2D8E35}"Mode_Forum#,"Закрыть","");
+	ShowPlayerDialogEx(params[0],0,0,"","Вы получили предупреждение, если вы не согласны с решением Администратора, то напишите жалобу на samp-x.ru, приложив данный скриншот.\nВарн можно снять с помощью /donate.\n{2D8E35}"Mode_Forum#,"Закрыть","");
 	pTemp[playerid][Anti_Pvar][30] = CurrentTimer+7;
 	if(PlayerInfo[params[0]][pWarns]>2)
 	{
@@ -46737,7 +46754,7 @@ ToCheat(type,playerid, code = 0)
 				else
 				{
 					ShowPlayerDialogEx(playerid,0,0,"Античит","Внимание! Код античита, который вас посадил все еще проходит тестирование\nЕсли он сработал ложно, опишите\
-					во всех деталях в группу\nто что вы делали перед тем, как вас сюда посадило.\n	vk.com/markbeast","Ок","");
+					во всех деталях на форуме\nто что вы делали перед тем, как вас сюда посадило.\n	samp-x.ru","Ок","");
 				}
 			}
 		}
@@ -46790,7 +46807,7 @@ ToCheat(type,playerid, code = 0)
 			new string [90];
 			format(string, sizeof(string), "Вы были отправлены в преисподнюю по подозрению в читерстве (Код 0%d)", code);
 			SendClientMessage(playerid,COLOR_LIGHTRED,string);
-			SendClientMessage(playerid, COLOR_LIGHTRED,"Если вы уверены, что это ошибка, и вы не использовали чит-программ, то сообщите об этом в группу /vk.com/markbeast.");
+			SendClientMessage(playerid, COLOR_LIGHTRED,"Если вы уверены, что это ошибка, и вы не использовали чит-программ, то сообщите об этом на форум samp-x.ru");
 
 
 			SetSpawnInfo(playerid, 255, 8, -1685.1571,1097.7434,1501.0859,353.5934, 0, 0, 0, 0, 0, 0);
@@ -46811,7 +46828,7 @@ ToCheat(type,playerid, code = 0)
 			new string [90];
 			format(string, sizeof(string), "Вы были кикнуты по подозрению в читерстве (Код 0%d)", code);
 			SendClientMessage(playerid,COLOR_LIGHTRED,string);
-			SendClientMessage(playerid, COLOR_LIGHTRED,"Если вы уверены, что это ошибка, и вы не использовали чит-программ, то сообщите об этом в группу /vk.com/markbeast.");
+			SendClientMessage(playerid, COLOR_LIGHTRED,"Если вы уверены, что это ошибка, и вы не использовали чит-программ, то сообщите об этом на форум samp-x.ru");
 
 			J_Kick(playerid);
 		}
@@ -60810,7 +60827,7 @@ new PricePrize[15+1] =
 						}
 						PlayerInfo[playerid][pHouseKey] = -1;
 						PlayerInfo[playerid][pDCTime]=0;
-						SendClientMessage(playerid,COLOR_WHITE,"******* "COLORT3" Ошибка, отправьте на /vk.com/markbeast скриншот и мы постараемся исправить, но мы вас выселили!");
+						SendClientMessage(playerid,COLOR_WHITE,"******* "COLORT3" Ошибка, отправьте на samp-x.ru скриншот и мы постараемся исправить, но мы вас выселили!");
 						SaveAccount(playerid);
 					}
 				}
@@ -63289,8 +63306,7 @@ new PricePrize[15+1] =
 							if(HouseInfo[i][hLock]>0 && !IsACop(playerid)) return SendClientMessage(playerid,COLOR_GREY,"[Мысли] Дверь заперта...");
 							SendClientMessage(playerid,-1,"Чтобы открыть меню дома введите /house");
 							SendClientMessage(playerid,-1,"Чтобы использовать аптечку введите /med");
-							//HouseEntered[playerid] = i;// выкидывало при входе
-							HouseEntered[playerid] = -1;
+							HouseEntered[playerid] = i;
 							InfoHouse[playerid] = -1;
 
 
@@ -64171,7 +64187,7 @@ new PricePrize[15+1] =
 			if(response)
 			{
 				if(dBiz[playerid]==-1) return SendClientMessage(playerid,COLOR_RED,"Ошибка");
-				if(GetString(BizInfo[dBiz[playerid]][bOwner],"The State")) return SendClientMessage(playerid,COLOR_RED,"Ошибка");
+				//if(GetString(BizInfo[dBiz[playerid]][bOwner],"The State")) return SendClientMessage(playerid,COLOR_RED,"Ошибка");
 				if(BizInfo[dBiz[playerid]][bState] == 7 || BizInfo[dBiz[playerid]][bState] == 1 || BizInfo[dBiz[playerid]][bState] == 2 || BizInfo[dBiz[playerid]][bState] == 3 || BizInfo[dBiz[playerid]][bState] == 9)
 				{
 					if(BizInfo[dBiz[playerid]][bBuyCost]>0 && BizInfo[dBiz[playerid]][bNeedItem]>0)
